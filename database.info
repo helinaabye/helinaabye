@@ -1,0 +1,31 @@
+sudo -u postgres psql
+CREATE ROLE apiuser WITH LOGIN PASSWORD 'password';
+ALTER ROLE apiuser CREATEDB;
+\q
+--> OPTION 1
+cat local.sql | psql -d postgres -U apiuser
+--> OPTION 2
+psql -d postgres -U apiuser
+CREATE DATABASE blogsie;
+\c blogsie
+--> copy, paste and run each create table command in local.sql one by one
+\q
+
+//To alter exisiting tables
+psql -d <database-name> -U <user-name>
+psql -d blogsie -U apiuser
+ALTER TABLE <table-name> RENAME TO <new-table-name>;
+ALTER TABLE <table-name> ADD COLUMN <column-name> boolean;
+ALTER TABLE posts ADD COLUMN public boolean;
+ALTER TABLE <table-name>
+ADD CONSTRAINT <table-name>_<column-name>_fkey
+FOREIGN KEY (<column-name>)
+REFERENCES <related-table-name>(<related-column-name>)
+ON DELETE CASCADE;
+
+//To delete all data from database
+DELETE from <table-name>;
+DELETE from <table-name>;
+
+//To see TABLE
+SELECT * FROM <table-name>;

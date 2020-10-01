@@ -1,0 +1,5 @@
+npm i heroku -g
+heroku login
+// go to web browser and login, then install postgres add on
+cat heroku.sql | heroku pg:psql -a blogsie
+heroku logs --tail -a blogsie
