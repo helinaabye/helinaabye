@@ -1,4 +1,11 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';import {
+  // faYoutube,
+  // faFacebook,
+  faTwitter,
+  faGithub
+  // faInstagram
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import 'materialize-css/dist/css/materialize.min.css';
 // import M from "materialize-css";
@@ -21,7 +28,7 @@ function App() {
   const [tick, setTick] = useState(null)
   const getDate = useCallback(
     () => {
-      setDate(new Date().toLocaleString())
+      setDate(new Date().toLocaleString("en-US", {timeZone: "Africa/Kampala"}))
       setInterval(
           () => setTick(tick + 1),
           1000
@@ -38,10 +45,19 @@ useEffect(() => {
     <div className="App">
     <header className="App-header">
        <p>
-       Hello! I am Helina.
+       Hello! I am Helina, a Software Developer.
         </p> 
+       <div class="social-container">
+       <a href="https://www.twitter.com/helinaabye_" className="twitter social">
+          <FontAwesomeIcon icon={faTwitter} size="1.5x" />
+        </a>
+        <a href="https://github.com/helinaabye"
+          className="github social">
+          <FontAwesomeIcon icon={faGithub} size="1.5x" />
+        </a>
+       </div>
        <p>
-       The current time in Ethiopia is
+       The current date and time in Ethiopia is
         </p> 
        {date}
       {/* <ApiContextProvider>
