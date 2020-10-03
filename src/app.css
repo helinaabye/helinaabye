@@ -39,8 +39,11 @@
 }
 
 .social-container {
-  background: #eee;
+  display: flex;
+  background: rgb(233, 222, 253);
   padding: 10px 10px;
+  width: 120px;
+  justify-content: center; 
 }
 
 a.social {
@@ -66,5 +69,5 @@ a.twitter {
 }
 
 a.github {
-  color: black;
+  color: rgb(255, 255, 255);
 }
