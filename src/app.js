@@ -89,7 +89,7 @@ useEffect(() => {
               </IconButton>
             </Grid>
             <Grid item container xs={8}>
-              <img src={imgList[index]} width="500px" alt="chibird motivation card"/>
+              <img src={imgList[index]} alt="chibird motivation card"/>
             </Grid>
             <Grid item xs={2}>
               <IconButton 
