@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';import {
+import React, { useEffect, useState } from 'react';import {
   // faYoutube,
   // faFacebook,
   faTwitter,
@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   // useEffect(() => M.AutoInit(), []);
   const [date, setDate] = useState(null)
-  const [tick, setTick] = useState(null)
   const [index, setIndex] = useState(0)
   const classes = useStyles();
   const imgList = list;
@@ -63,20 +62,12 @@ function App() {
     }
   }
 
-  const getDate = useCallback(
-    () => {
-      setDate(new Date().toLocaleString("en-US", {timeZone: "Africa/Kampala"}))
-      setInterval(
-          () => setTick(tick + 1),
-          1000
-        );
-    },
-    [tick],
-  )
-
-useEffect(() => {
-  getDate()
- }, [getDate, tick])
+  useEffect(() => {
+        setInterval(
+            () => setDate(new Date().toLocaleString("en-US", {timeZone: "Africa/Kampala"})),
+            1000
+          );
+  }, [])
 
   return (
     <div className="App">
