@@ -2,7 +2,8 @@ import React, { useEffect, useState, useCallback } from 'react';import {
   // faYoutube,
   // faFacebook,
   faTwitter,
-  faGithub
+  faGithub,
+  faMedium 
   // faInstagram
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -105,11 +106,11 @@ useEffect(() => {
           </Grid>       
         </Grid>
         <Grid item container sm={12} md={6}  className={classes.content}>
-          <div>
+          <div> 
             <p>
               Hello! I am Helina, a Software Developer.
             </p> 
-            <div  className={classes.content}>
+            <Grid item container className={classes.content}>
             <a href="https://www.twitter.com/helinaabye_" className="twitter social">
               <FontAwesomeIcon icon={faTwitter} size="1x" />
             </a>
@@ -117,7 +118,11 @@ useEffect(() => {
               className="github social">
               <FontAwesomeIcon icon={faGithub} size="1x" />
             </a>
-           </div>
+            <a href="https://medium.com/@helinaabye"
+              className="github social">
+              <FontAwesomeIcon icon={faMedium} size="1x" />
+            </a>
+           </Grid>
            <p>
             The current date and time in Ethiopia is
            </p>  
