@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
   },
   arrowIcon: {
     color: "#fff"
+  },
+  link: {
+    color: "#96cff0"
   }
 }));
 
@@ -106,7 +109,7 @@ useEffect(() => {
           </Grid>
           <Grid item container   className={classes.content} xs={12}>
             <Typography  variant="caption">
-              Awesome motivational art from <Link href="https://chibird.com/">Chibird</Link>!
+              Awesome motivational art from <Link className={classes.link} href="https://chibird.com/">Chibird</Link>!
             </Typography>
           </Grid>       
         </Grid>
