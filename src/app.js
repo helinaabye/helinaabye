@@ -7,7 +7,7 @@ import React, { useEffect, useState, useCallback } from 'react';import {
   // faInstagram
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Grid, IconButton, Typography, Link } from "@material-ui/core";
+import { Grid, IconButton, Typography, Link, Hidden } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -80,7 +80,7 @@ useEffect(() => {
     <header className="App-header">
       <Grid item container md={10} >
         <Grid item container sm={12} md={6}>
-          <Grid item container  className={classes.content} xs={12}>
+          <Grid item container className={classes.content} xs={12}>
             <Grid item xs={2}>
               <IconButton 
               className={classes.arrowIcon}
@@ -88,8 +88,13 @@ useEffect(() => {
                 <ArrowBackIosIcon/>
               </IconButton>
             </Grid>
-            <Grid item container xs={8}>
-              <img src={imgList[index]} alt="chibird motivation card"/>
+            <Grid item container className={classes.content} xs={8}>
+              <Hidden mdUp>
+                <img src={imgList[index]} width="250px" alt="chibird motivation card"/>
+              </Hidden>
+              <Hidden smDown>
+                <img src={imgList[index]} width="500px" alt="chibird motivation card"/>
+              </Hidden>
             </Grid>
             <Grid item xs={2}>
               <IconButton 
