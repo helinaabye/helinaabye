@@ -110,7 +110,7 @@ function App() {
               Hello! I am Helina, a Software Developer.
             </p> 
             <Grid item container className={classes.content}>
-            <a href="https://www.twitter.com/helinaabye_" className="twitter social">
+            <a href="https://www.twitter.com/coderette_" className="twitter social">
               <FontAwesomeIcon icon={faTwitter} size="1x" />
             </a>
             <a href="https://github.com/helinaabye"
