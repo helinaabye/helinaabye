@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "50px"
   },
   text: {
-    padding: theme.spacing(4, 1),
+    padding: theme.spacing(3, 1),
   },
   footer: {
     paddingTop: theme.spacing(4),
@@ -69,36 +69,8 @@ function App() {
     <header className="App-header">
       <Grid item container md={10} justify="center" alignItems="center"  >        
         <Grid item container sm={12} md={6} spacing={2}  className={classes.content}>
-          <Grid item xs={12}>
-            <div className={classes.text}> 
-              <Typography variant="h6">
-                Hello! I am Helina, a Software Developer.
-              </Typography> 
-              <Grid item container className={classes.content}>
-              <a href="https://medium.com/@helinaabye"  target="_blank"  rel="noopener noreferrer"
-                className="github social">
-                <FontAwesomeIcon icon={faMedium} size="1x" />
-              </a>
-              <a href="https://www.twitter.com/coderette_" target="_blank"  rel="noopener noreferrer" className="twitter social">
-                <FontAwesomeIcon icon={faTwitter} size="1x" />
-              </a>
-              <a href="https://github.com/helinaabye"  target="_blank"  rel="noopener noreferrer"
-                className="github social">
-                <FontAwesomeIcon icon={faGithub} size="1x" />
-              </a>
-            </Grid>
-              <Typography variant="h6">
-              The current date and time in Ethiopia is
-              </Typography> 
-              <Typography variant="h6">
-                
-              {date}<br/>
-                “Don't count the days. Make the days count.”<br/> Muhammad Ali
-              </Typography> 
-            </div>
-          </Grid>
-
           <Grid item container className={classes.content} xs={10} sm={6} md={10}>
+          <Grid item xs={12}><div className={classes.text}></div></Grid>
               <Grid item xs={2}>
                   <IconButton 
                   className={classes.arrowIcon}
@@ -127,6 +99,38 @@ function App() {
                   </Typography>
                 </Grid>   
             </Grid>
+          <Grid item xs={12}>
+            <div className={classes.text}>
+              <Typography variant="h6">
+                Hello! I am Helina, a Software Developer.
+              </Typography> 
+              <Grid item container className={classes.content}>
+              <a href="https://medium.com/@helinaabye"  target="_blank"  rel="noopener noreferrer"
+                className="github social">
+                <FontAwesomeIcon icon={faMedium} size="1x" />
+              </a>
+              <a href="https://www.twitter.com/coderette_" target="_blank"  rel="noopener noreferrer" className="twitter social">
+                <FontAwesomeIcon icon={faTwitter} size="1x" />
+              </a>
+              <a href="https://github.com/helinaabye"  target="_blank"  rel="noopener noreferrer"
+                className="github social">
+                <FontAwesomeIcon icon={faGithub} size="1x" />
+              </a>
+            </Grid>
+              <Typography variant="h6">
+              The current date and time in Ethiopia is
+              </Typography> 
+              <Typography variant="h6">
+                
+              {date}<br/>
+                “Don't count the days. Make the days count.”<br/> Muhammad Ali
+              </Typography> 
+              <Typography variant="h6">
+              Check out Blogsie, built with<br/> React, Node, Express, Postgres.
+              </Typography> 
+            </div>
+          </Grid>
+
         </Grid>
 
         <Grid item container className={classes.content} sm={12} md={6}>
