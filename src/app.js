@@ -160,12 +160,11 @@ function App() {
                 <Button size="small" onClick={() => vidRef.current.pause()} color="primary">
                   Pause
                 </Button>
-              {//  <Button size="small" 
-                 // href="https://blogsie.herokuapp.com/"  target="_blank"  rel="noopener noreferrer" 
-                 // color="primary">
-                 // Visit Blogsie
-              //  </Button> 
-               }
+                <Button size="small" 
+                  href="https://blogsie.herokuapp.com/"  target="_blank"  rel="noopener noreferrer" 
+                  color="primary">
+                  Visit Blogsie
+                </Button> 
               </CardActions>
             </Card>
         </Grid>  
