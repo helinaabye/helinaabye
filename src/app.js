@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import {  faTwitter, faGithub, faMedium } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Grid, IconButton, Typography, Link, Hidden, Card, CardActionArea, CardMedia, CardContent, CardActions, Button } from "@material-ui/core";
@@ -56,6 +56,13 @@ function App() {
       }
     }
   }
+
+  useEffect(() => {
+    if (vidRef!==null) {
+      vidRef.current.volume = 0
+      vidRef.current.play()
+    }
+  }, [vidRef])
 
   useEffect(() => {
         setInterval(
@@ -160,11 +167,9 @@ function App() {
                 <Button size="small" onClick={() => vidRef.current.pause()} color="primary">
                   Pause
                 </Button>
-              {//  <Button size="small" 
-                 // href="https://blogsie.herokuapp.com/"  target="_blank"  rel="noopener noreferrer" 
-                 // color="primary">
-                 // Visit Blogsie
-              //  </Button> }
+                <Button size="small" href="https://blogsie.herokuapp.com/"  target="_blank"  rel="noopener noreferrer" color="primary">
+                  Visit Blogsie
+                </Button>
               </CardActions>
             </Card>
         </Grid>  
