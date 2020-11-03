@@ -42,7 +42,7 @@ function App() {
   const [index, setIndex] = useState(0)
   const vidRef = useRef(null);
   const classes = useStyles();
-  const imgList = list;
+  const imgList = list; 
 
   const handleChangeImg = (direction) => {
     if (direction === "next") {
