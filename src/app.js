@@ -50,10 +50,13 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     width: 'inherit',
     fontSize: '4rem',
-    "&:touchtap": {
+    "&:touchstart": {
       display: "flex !important",
       opacity: 1,
       backgroundColor: "rgba(255, 255, 255, 0.5)"
+      },
+    "&:touchend": {
+      opacity: 0,
       },
     "&:hover": {
       display: "flex !important",
