@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {  faTwitter, faGithub, faMedium } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Grid, IconButton, Typography, Link, Hidden, Card, CardActionArea, CardMedia, CardContent, CardActions, Button } from "@material-ui/core";
@@ -8,6 +8,10 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { list } from './imgList'
 import Blogsie from './video/BlogsiePreview.mp4'
 import './app.css';
+import EmailIcon from '@material-ui/icons/Email';
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
+import { purple } from '@material-ui/core/colors'
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -28,6 +32,35 @@ const useStyles = makeStyles((theme) => ({
   text: {
     padding: theme.spacing(3, 1),
   },
+  media: {
+     height: 0,
+     paddingTop: '56.25%' // 16:9
+  },
+  card: {
+     position: 'relative',
+  },
+  playPause: {
+    color: purple[700]
+  },
+  overlay: {
+    opacity: 0,
+    height: '444px',
+    justifyContent: "center",
+    alignItems: "center",
+    position: 'absolute',
+    width: 'inherit',
+    fontSize: '4rem',
+    "&:touch": {
+      display: "flex !important",
+      opacity: 1,
+      backgroundColor: "rgba(255, 255, 255, 0.5)"
+      },
+    "&:hover": {
+      display: "flex !important",
+      opacity: 1,
+      backgroundColor: "rgba(255, 255, 255, 0.5)"
+      }
+  },
   footer: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(2),
@@ -40,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [date, setDate] = useState(null)
   const [index, setIndex] = useState(0)
+  const [overlay, setOverlay] = useState(null)
   const vidRef = useRef(null);
   const classes = useStyles();
   const imgList = list; 
@@ -57,12 +91,35 @@ function App() {
     }
   }
 
+  const handlePlayPause = () => {
+    if(vidRef.current.paused || vidRef.current.ended) {
+      vidRef.current.play()
+      setOverlay(
+        <CardMedia className={classes.overlay}>
+          <PauseCircleOutlineIcon fontSize="inherit" className={classes.playPause}/>
+        </CardMedia>
+      )
+    } else if (!vidRef.current.paused && !vidRef.current.ended) {
+      vidRef.current.pause()
+      setOverlay(
+        <CardMedia className={classes.overlay}>
+          <PlayCircleOutlineIcon fontSize="inherit" className={classes.playPause}/>
+        </CardMedia>
+      )
+    }
+  }
+  
   useEffect(() => {
     if (vidRef!==null) {
       vidRef.current.volume = 0
       vidRef.current.play()
+      setOverlay(
+        <CardMedia className={classes.overlay}>
+          <PauseCircleOutlineIcon fontSize="inherit" className={classes.playPause}/>
+        </CardMedia>
+      )
     }
-  }, [vidRef])
+  }, [vidRef, classes])
 
   useEffect(() => {
         setInterval(
@@ -112,6 +169,10 @@ function App() {
                 Hello! I am Helina, a Software Developer.
               </Typography> 
               <Grid item container className={classes.content}>
+              <a href="mailto:helinaago@gmail.com"  target="_blank"  rel="noopener noreferrer"
+                className="github social">
+                <EmailIcon size="1x"/>
+              </a>
               <a href="https://medium.com/@helinaabye"  target="_blank"  rel="noopener noreferrer"
                 className="github social">
                 <FontAwesomeIcon icon={faMedium} size="1x" />
@@ -142,7 +203,8 @@ function App() {
 
         <Grid item container className={classes.content} sm={12} md={6}>
           <Card className={classes.root}>
-              <CardActionArea>
+              <CardActionArea className={classes.card} onClick={() => handlePlayPause()}>
+                {overlay}
                 <CardMedia
                   component="video"
                   alt="Blogsie app preview"
@@ -161,13 +223,13 @@ function App() {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" onClick={() => vidRef.current.play()} color="primary">
+                <Button size="small" onClick={() => vidRef.current.play()} className={classes.playPause}>
                   Play
                 </Button>
-                <Button size="small" onClick={() => vidRef.current.pause()} color="primary">
+                <Button size="small" onClick={() => vidRef.current.pause()}  className={classes.playPause}>
                   Pause
                 </Button>
-                <Button size="small" href="https://blogsie.herokuapp.com/"  target="_blank"  rel="noopener noreferrer" color="primary">
+                <Button size="small" href="https://blogsie.herokuapp.com/"  target="_blank"  rel="noopener noreferrer"  className={classes.playPause}>
                   Visit Blogsie
                 </Button>
               </CardActions>
@@ -177,7 +239,7 @@ function App() {
       </header>
       
       <footer className={classes.footer}>
-        <Grid  container   className={classes.content} xs={12}>
+        <Grid  container   className={classes.content} >
           <Typography  variant="caption" >
             {'Copyright © '}
             {new Date().getFullYear()}
