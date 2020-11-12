@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import {  faTwitter, faGithub, faMedium } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Grid, IconButton, Typography, Link, Hidden, Card, CardActionArea, CardMedia, CardContent, CardActions, Button } from "@material-ui/core";
+import { Grid, IconButton, Typography, Link, Hidden, Card, CardActionArea, CardMedia, CardContent, CardActions, Button, CircularProgress } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -41,25 +41,27 @@ const useStyles = makeStyles((theme) => ({
   },
   playPause: {
     color: purple[700]
+  }, 
+  loading: {
+    zIndex: 1,
+    position: 'absolute'
   },
   overlay: {
-    opacity: 0,
+    display: "flex !important",
     height: '444px',
     justifyContent: "center",
     alignItems: "center",
     position: 'absolute',
     width: 'inherit',
     fontSize: '4rem',
-    "&:touchmove": {
-      display: "flex !important",
-      opacity: 1,
-      backgroundColor: "rgba(255, 255, 255, 0.5)"
-      },
+    backgroundColor: "rgba(255, 255, 255, 0.5)",
+    opacity: 0,
     "&:hover": {
-      display: "flex !important",
       opacity: 1,
-      backgroundColor: "rgba(255, 255, 255, 0.5)"
-      }
+      },
+    "&:active": {
+      opacity: 1,
+      },
   },
   footer: {
     paddingTop: theme.spacing(4),
@@ -74,11 +76,15 @@ function App() {
   const [date, setDate] = useState(null)
   const [index, setIndex] = useState(0)
   const [overlay, setOverlay] = useState(null)
+  const [loading, setLoading] = useState(true)
   const vidRef = useRef(null);
+  const smallimg = useRef(null);
+  const bigimg = useRef(null);
   const classes = useStyles();
   const imgList = list; 
 
   const handleChangeImg = (direction) => {
+    setLoading(true)
     if (direction === "next") {
       if (index+1 !== imgList.length) {
         setIndex(index + 1)
@@ -108,6 +114,7 @@ function App() {
       )
     }
   }
+
   
   useEffect(() => {
     if (vidRef!==null) {
@@ -137,30 +144,37 @@ function App() {
           <Grid item xs={12}><div className={classes.text}></div></Grid>
               <Grid item xs={2}>
                   <IconButton 
+                  disabled={loading || index === 0}
                   className={classes.arrowIcon}
                   onClick={() => handleChangeImg("back")}>
                     <ArrowBackIosIcon/>
                   </IconButton>
                 </Grid>
                 <Grid item container className={classes.content} xs={8}>
-                  <Hidden mdUp>
-                    <img src={imgList[index]} width="250px" alt="chibird motivation card"/>
-                  </Hidden>
-                  <Hidden smDown>
-                    <img src={imgList[index]} width="300px" alt="chibird motivation card"/>
-                  </Hidden>
+                    <Hidden mdUp>
+                      <img src={imgList[index]} width="250px" ref={smallimg} onLoad={() => setLoading(false)} alt="loading..."/>
+                      { loading ? <CircularProgress className={classes.loading}/> : null }
+                    </Hidden>
+                    <Hidden smDown>
+                      <img src={imgList[index]} width="300px" ref={bigimg} onLoad={() =>  setLoading(false)} alt="loading..."/>
+                      { loading ? <CircularProgress  className={classes.loading}/> : null }
+                    </Hidden>
                 </Grid>
                 <Grid item xs={2}>
                   <IconButton 
+                  disabled={loading || index === imgList.length - 1}
                   className={classes.arrowIcon}
                   onClick={() => handleChangeImg("next")}>
                     <ArrowForwardIosIcon/>
                   </IconButton>
                 </Grid>
                 <Grid item container   className={classes.content} xs={12}>
-                  <Typography  variant="caption">
-                    Awesome motivational art from <Link className={classes.link}  target="_blank"  rel="noopener noreferrer" href="https://chibird.com/">Chibird</Link>!
-                  </Typography>
+                    <Typography  variant="caption">
+                    Happy Birthday to a special person! 
+                    Thank you for being amazing, inspiring, loving, a mentor, and a best friend. Love you! 
+                    - Gifs from <Link className={classes.link}  target="_blank"  rel="noopener noreferrer" href="https://giphy.com">Giphy</Link>and <Link className={classes.link}  target="_blank"  rel="noopener noreferrer" href="https://tenor.com">Tenor</Link>
+                  { /*  Awesome motivational art from <Link className={classes.link}  target="_blank"  rel="noopener noreferrer" href="https://chibird.com/">Chibird</Link>!*/}
+                    </Typography>
                 </Grid>   
             </Grid>
           <Grid item xs={12}>
