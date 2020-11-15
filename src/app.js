@@ -170,10 +170,10 @@ function App() {
                 </Grid>
                 <Grid item container   className={classes.content} xs={12}>
                     <Typography  variant="caption">
-                    Happy Birthday to a special person! 
+                    { /*  Happy Birthday to a special person! 
                     Thank you for being amazing, inspiring, loving, a mentor, and a best friend. Love you! 
-                    - Gifs from <Link className={classes.link}  target="_blank"  rel="noopener noreferrer" href="https://giphy.com">Giphy</Link>and <Link className={classes.link}  target="_blank"  rel="noopener noreferrer" href="https://tenor.com">Tenor</Link>
-                  { /*  Awesome motivational art from <Link className={classes.link}  target="_blank"  rel="noopener noreferrer" href="https://chibird.com/">Chibird</Link>!*/}
+                    - Gifs from <Link className={classes.link}  target="_blank"  rel="noopener noreferrer" href="https://giphy.com">Giphy</Link>and <Link className={classes.link}  target="_blank"  rel="noopener noreferrer" href="https://tenor.com">Tenor</Link>*/}
+                   Awesome motivational art from <Link className={classes.link}  target="_blank"  rel="noopener noreferrer" href="https://chibird.com/">Chibird</Link>!
                     </Typography>
                 </Grid>   
             </Grid>
