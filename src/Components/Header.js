@@ -3,7 +3,7 @@ import {  faTwitter, faGithub, faMediumM } from "@fortawesome/free-brands-svg-ic
 import {  faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { makeStyles } from '@material-ui/core/styles';
-import { Toolbar, Button, Typography, Hidden, AppBar, Grid, IconButton, Avatar } from '@material-ui/core';
+import { Toolbar, Typography, AppBar, Grid, Avatar } from '@material-ui/core';
 import { withRouter } from "react-router-dom";
 import helina from '../images/helinaabye.jpg'
 

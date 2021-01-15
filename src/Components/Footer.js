@@ -1,5 +1,5 @@
 import React from 'react';
-import { CssBaseline, Container, Toolbar, Link} from '@material-ui/core';
+import { CssBaseline, Container} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Copyright from './Copyright';
 import { withRouter } from "react-router-dom";
@@ -28,24 +28,24 @@ const useStyles = makeStyles((theme) => ({
 const Footer = ({ history }) => {
   const classes = useStyles();
 
-  const sections = [
-      {
-          title: "Home",
-          url: "#"
-      },
-      {
-          title: "Web App",
-          url: "#"
-      },
-      {
-          title: "Design",
-          url: "#"
-      },
-      {
-          title: "Contact",
-          url: "#"
-      },
-  ]
+  // const sections = [
+  //     {
+  //         title: "Home",
+  //         url: "#"
+  //     },
+  //     {
+  //         title: "Web App",
+  //         url: "#"
+  //     },
+  //     {
+  //         title: "Design",
+  //         url: "#"
+  //     },
+  //     {
+  //         title: "Contact",
+  //         url: "#"
+  //     },
+  // ]
 
   return (
     <div className={classes.root}>

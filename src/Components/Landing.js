@@ -1,30 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Avatar, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Hidden, TextField, Typography } from '@material-ui/core';
+import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Link, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import {  faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import classnames from 'classnames';
 import { withRouter } from "react-router-dom";
 import Blogsie from '../video/BlogsiePreview.mp4'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
-import { list } from '../imgList'
 import { purple } from '@material-ui/core/colors'
 import Modal from '@material-ui/core/Modal';
 import Request from './Request'
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const useStyles = makeStyles((theme) => ({
   imageStyle: {
@@ -135,86 +121,36 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: theme.spacing(2, 2, 3),
     display: 'flex',
     alignSelf: 'center',
     justifySelf: 'center',
   },
+  link: {
+    color: '#fff'
+  },
+  modal: {
+    padding: "20px"
+  }
 }));
 
-const Landing = (props) => {
+const Landing = () => {
   const classes = useStyles();
-  const { history } = props;  
-  const [index, setIndex] = useState(0)
   const [overlay, setOverlay] = useState(null)
-  const [loading, setLoading] = useState(true)
   const vidRef = useRef(null);
-  const smallimg = useRef(null);
-  const bigimg = useRef(null);
-  const imgList = list; 
   const [date, setDate] = useState(null)  
-  const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
+  const [type, setType] = React.useState("contact");
 
-  const handleOpen = () => {
+  const handleOpen = (request) => {
     setOpen(true);
+    setType(request);
   };
 
   const handleClose = () => {
     setOpen(false);
+    setType("contact");
   };
-
-  const body = (
-    <Grid item container xs={12} className={classes.position}>
-    <Grid item container xs={12} sm={8} md={6} elevation={6} square>
-      <div className={classes.paper}>
-        <Typography variant="p">
-          Please enter your name and email<br/>
-          I will get back to you soon!
-        </Typography>
-        <form className={classes.form} noValidate onSubmit={null}>
-          <Grid container spacing={2}>
-              <Grid item xs={12}>
-                  <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="name"
-                  label="Name"
-                  name="name"
-                  autoComplete="name"
-                  autoFocus
-                  />
-              </Grid>
-              <Grid item xs={12}>
-                  <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="email"
-                  label="Email"
-                  type="email"
-                  id="email"
-                  autoComplete="email"
-                  />
-              </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-          Submit Request           
-          </Button>
-        </form>
-      </div>   
-    </Grid>
-    </Grid>
-  );
 
 
   useEffect(() => {
@@ -223,20 +159,6 @@ const Landing = (props) => {
         1000
       );
 }, [])
-
-  const handleChangeImg = (direction) => {
-    setLoading(true)
-    if (direction === "next") {
-      if (index+1 !== imgList.length) {
-        setIndex(index + 1)
-      }
-    } 
-    if (direction === "back") {
-      if (index !==0 ) {
-      setIndex(index - 1)
-      }
-    }
-  }
 
   const handlePlayPause = () => {
     if(vidRef.current.paused || vidRef.current.ended) {
@@ -290,22 +212,22 @@ const Landing = (props) => {
                     Build
                     </Typography>
                     <Typography align="center" component="p"  className={classes.responsiveBody}>
-                    Get a web app built to provide you with unique solutions and realize your goals.
+                    Get a web application built to provide you with unique solutions and realize your goals.
                     </Typography>
                     <Button
                     variant="contained"
                     color="primary" 
                     className={classes.margin}
-                    onClick={handleOpen}>
+                    onClick={() => handleOpen("build")}>
                       Request a web app
                     </Button>
-                    <Modal
+                    <Modal 
                       open={open}
-                      onClose={handleClose}
+                      onClose={() => handleClose}
                       aria-labelledby="simple-modal-title"
                       aria-describedby="simple-modal-description"
                     >
-                      {<Request/>}
+                      {<Request type={type} handleClose={handleClose}/>}
                     </Modal>
                 </Container>
               </Grid>
@@ -358,17 +280,9 @@ const Landing = (props) => {
                     <Button
                     variant="contained"
                     className={classnames(classes.margin, classes.custom)}
-                    onClick={handleOpen}>
+                    onClick={() => handleOpen("design")}>
                       Request a design
                     </Button>
-                    <Modal
-                      open={open}
-                      onClose={handleClose}
-                      aria-labelledby="simple-modal-title"
-                      aria-describedby="simple-modal-description"
-                    >
-                      {<Request/>}
-                    </Modal>
                 </Container>
               </Grid>
             </Grid>
@@ -379,7 +293,10 @@ const Landing = (props) => {
               <Grid item xs={12}>
                 <Typography component="p">
                 {'It is '}{date}{' in Addis Ababa, Ethiopia'}<br/>
-                {'Contact me any time :)'}<br/>
+                <Link className={classes.link} 
+                    onClick={() => handleOpen("contact")}>
+                {'Contact me '}{<FontAwesomeIcon icon={faEnvelope} size="1x"  color="#fff"/>}{' any time :)'}
+                </Link> 
                 </Typography>
                 </Grid>
                 
