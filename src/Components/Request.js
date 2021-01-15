@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, CssBaseline, TextField, Paper, Grid, Typography } from '@material-ui/core';
+import { Button, CssBaseline, TextField, Paper, Grid, Typography, Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router-dom";
+import Chibird from '../video/tenor.gif'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,14 +16,14 @@ const useStyles = makeStyles((theme) => ({
     // backgroundSize: 'cover',
     // backgroundPosition: 'center',
     display: 'flex',
-    alignSelf: 'center',
-    justifySelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   form: {
     // width: '100%', // Fix IE 11 issue.
@@ -41,13 +42,24 @@ const Request = (props) => {
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={12} className={classes.image}>
-      <Grid item container xs={12} sm={8} md={6} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <Typography component="h1" variant="h5">
+      <Grid item container xs={12} sm={8} md={6} direction="row" component={Paper} elevation={6} square>
+        <Grid container className={classes.paper}>
+          <Grid item xs={12} sm={6}>
+        <Hidden smDown>
+          <Grid item  xs={12}>
+                      <img src={Chibird} width="250px" />
+                </Grid>
+                </Hidden>
+        <Grid item xs={12}>
+          <Typography variant="p">
             Please enter your name and email<br/>
             I will get back to you soon!
           </Typography>
-          <form className={classes.form} noValidate onSubmit={(e) => {e.preventDefault(); history.go(0)} }>
+        </Grid>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+          <Grid item xs={12}>  
+        <form className={classes.form} noValidate onSubmit={(e) => {e.preventDefault(); history.go(0)} }>
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <TextField
@@ -86,7 +98,11 @@ const Request = (props) => {
             Submit Request           
             </Button>
           </form>
-        </div>   
+        </Grid>
+          </Grid>
+       
+        
+        </Grid>   
       </Grid>
       </Grid>
     </Grid>
