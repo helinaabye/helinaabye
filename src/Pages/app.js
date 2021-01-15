@@ -1,16 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
 import {  faTwitter, faGithub, faMedium } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import EmailIcon from '@material-ui/icons/Email';
 import { Grid, IconButton, Typography, Link, Hidden, Card, CardActionArea, CardMedia, CardContent, CardActions, Button, CircularProgress } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { list } from './imgList'
 import Blogsie from './video/BlogsiePreview.mp4'
-import './app.css';
-import EmailIcon from '@material-ui/icons/Email';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
+import './app.css';
 import { purple } from '@material-ui/core/colors'
 
 const useStyles = makeStyles((theme) => ({
