@@ -136,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Alert(props) {
+const Alert = (props) => {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
@@ -246,7 +246,7 @@ const Landing = () => {
                       aria-labelledby="simple-modal-title"
                       aria-describedby="simple-modal-description"
                     >
-                      {<Request type={type} handleClose={handleClose} handleClick={handleClick}/>}
+                      {<><Request type={type} handleClose={handleClose} handleClick={handleClick}/></>}
                     </Modal>
                     <Snackbar 
                     open={openAlert} 

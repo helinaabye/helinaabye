@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, CssBaseline, TextField, Paper, Grid, Typography, Hidden } from '@material-ui/core';
+import { Button, CssBaseline, TextField, Paper, Grid, Typography, Hidden, ClickAwayListener } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router-dom";
 import Chibird from '../video/tenor.gif'
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const Request = (props) => {
   const classes = useStyles();
   const { type, handleClose, handleClick } = props;
-  const [ submission, setSubmission ] = useState({name: '', email: ''});
+  const [ submission, setSubmission ] = useState({type: type, name: '', email: '', message: ''});
   const [ error, setError ] = useState("")
 
   const onSubmit = (e) => {
@@ -54,10 +54,11 @@ const Request = (props) => {
       setError('Please enter valid email address')
     }  
   }
-  
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
+      <ClickAwayListener onClickAway={() => handleClose()}>
       <Grid item xs={12} className={classes.image}>
       <Grid item container xs={12} sm={8} md={6} direction="row" component={Paper} elevation={6} square>
         <Grid container className={classes.paper}>
@@ -72,12 +73,12 @@ const Request = (props) => {
                 </Hidden>
         <Grid item xs={12}>
           { error===''? (
-          <Typography variant="p">
+          <Typography variant="body1">
             Please enter your name and email<br/>
             I will get back to you soon!
           </Typography>
           ): (
-            <Typography variant="p" color="secondary">
+            <Typography variant="body1" color="secondary">
               {error}
             </Typography>
           )}
@@ -86,15 +87,15 @@ const Request = (props) => {
           <Grid item xs={12} sm={6}>
           <Grid item xs={12}> 
           { type==="build" ? (
-            <Typography color="primary" variant="p">
-            Web Application
+            <Typography color="primary" variant="h5">
+            Web App / Site
             </Typography>
           ) : type==="design" ? (
-            <Typography color="primary" variant="p">
+            <Typography color="primary" variant="h5">
             Web Design
             </Typography>
           ) : (
-            <Typography color="primary" variant="p">
+            <Typography color="primary" variant="h5">
             Contact
             </Typography>)}
            </Grid>
@@ -140,6 +141,7 @@ const Request = (props) => {
                         label="Message"
                         name="message"
                         autoComplete="message"
+                        onChange={(e) => setSubmission({...submission, message: e.target.value})}
                         />
                     </Grid>
                   ) : (null)
@@ -162,6 +164,7 @@ const Request = (props) => {
         </Grid>   
       </Grid>
       </Grid>
+      </ClickAwayListener>
     </Grid>
   );
 }
