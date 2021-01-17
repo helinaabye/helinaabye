@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import { Button, CssBaseline, TextField, Paper, Grid, Typography, Hidden, ClickAwayListener } from '@material-ui/core';
+import { Button, TextField, Paper, Grid, Typography, Hidden, ClickAwayListener, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router-dom";
 import Chibird from '../video/tenor.gif'
+import CancelIcon from '@material-ui/icons/Cancel';
 
 const useStyles = makeStyles((theme) => ({
   image: {
-    // backgroundImage: 'url(https://unsplash.com/photos/hYjIYsJuyVQ/download?force=true&w=1920)',
-    // backgroundRepeat: 'no-repeat',
-    // backgroundColor:
-    //   theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    // backgroundSize: 'cover',
-    // backgroundPosition: 'center',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -23,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   form: {
-    // width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(0),
   },
   submit: {
@@ -56,14 +50,12 @@ const Request = (props) => {
   }
 
   return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
+      <div className={classes.image}>
       <ClickAwayListener onClickAway={() => handleClose()}>
-      <Grid item xs={12} className={classes.image}>
       <Grid item container xs={12} sm={8} md={6} direction="row" component={Paper} elevation={6} square>
         <Grid container className={classes.paper}>
           <Grid item xs={12} className={classes.close}>
-            <Button variant="outlined" color="secondary" size="small" onClick={() => handleClose()}>Close</Button>
+            <IconButton color="secondary" size="small" onClick={() => handleClose()}><CancelIcon/></IconButton>
           </Grid>
           <Grid item xs={12} sm={6}>
         <Hidden smDown>
@@ -71,18 +63,6 @@ const Request = (props) => {
                       <img src={Chibird} alt="Chibird penguin hug" width="250px" />
                 </Grid>
                 </Hidden>
-        <Grid item xs={12}>
-          { error===''? (
-          <Typography variant="body1">
-            Please enter your name and email<br/>
-            I will get back to you soon!
-          </Typography>
-          ): (
-            <Typography variant="body1" color="secondary">
-              {error}
-            </Typography>
-          )}
-        </Grid>
           </Grid>
           <Grid item xs={12} sm={6}>
           <Grid item xs={12}> 
@@ -99,6 +79,18 @@ const Request = (props) => {
             Contact
             </Typography>)}
            </Grid>
+        <Grid item xs={12}>
+          { error===''? (
+          <Typography variant="body1">
+            Please enter your name and email<br/>
+            I will get back to you soon!
+          </Typography>
+          ): (
+            <Typography variant="body1" color="secondary">
+              {error}
+            </Typography>
+          )}
+        </Grid>
           <Grid item xs={12}>  
         <form className={classes.form} noValidate onSubmit={(e) => onSubmit(e)}>
             <Grid container spacing={2}>
@@ -154,7 +146,7 @@ const Request = (props) => {
               color="primary"
               className={classes.submit}
             >
-            Submit Request           
+            { type==='contact' ? ('Send Message') : ('Submit Request') }           
             </Button>
           </form>
         </Grid>
@@ -163,9 +155,8 @@ const Request = (props) => {
         
         </Grid>   
       </Grid>
-      </Grid>
       </ClickAwayListener>
-    </Grid>
+      </div>
   );
 }
 
