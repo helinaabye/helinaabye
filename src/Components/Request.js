@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, CssBaseline, TextField, Paper, Grid, Typography, Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router-dom";
@@ -38,8 +38,23 @@ const useStyles = makeStyles((theme) => ({
 
 const Request = (props) => {
   const classes = useStyles();
-  const { type, handleClose } = props;
+  const { type, handleClose, handleClick } = props;
+  const [ submission, setSubmission ] = useState({name: '', email: ''});
+  const [ error, setError ] = useState("")
 
+  const onSubmit = (e) => {
+    e.preventDefault(); 
+    const format = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i
+    if (submission.name!=='' && submission.email!=='' && format.test(submission.email)) {
+      handleClose()
+      handleClick()
+    } else if (submission.name==='') {
+      setError('Please enter a name')
+    } else if (submission.email==='' || !format.test(submission.email)) {
+      setError('Please enter valid email address')
+    }  
+  }
+  
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -56,10 +71,16 @@ const Request = (props) => {
                 </Grid>
                 </Hidden>
         <Grid item xs={12}>
+          { error===''? (
           <Typography variant="p">
             Please enter your name and email<br/>
             I will get back to you soon!
           </Typography>
+          ): (
+            <Typography variant="p" color="secondary">
+              {error}
+            </Typography>
+          )}
         </Grid>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -78,7 +99,7 @@ const Request = (props) => {
             </Typography>)}
            </Grid>
           <Grid item xs={12}>  
-        <form className={classes.form} noValidate onSubmit={(e) => {e.preventDefault(); handleClose()} }>
+        <form className={classes.form} noValidate onSubmit={(e) => onSubmit(e)}>
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <TextField
@@ -90,6 +111,7 @@ const Request = (props) => {
                     label="Name"
                     name="name"
                     autoComplete="name"
+                    onChange={(e) => setSubmission({...submission, name: e.target.value})}
                     autoFocus
                     />
                 </Grid>
@@ -104,6 +126,7 @@ const Request = (props) => {
                     type="email"
                     id="email"
                     autoComplete="email"
+                    onChange={(e) => setSubmission({...submission, email: e.target.value})}
                     />
                 </Grid>
                 { type==="contact" ? (

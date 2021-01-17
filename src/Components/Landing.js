@@ -11,6 +11,8 @@ import { purple } from '@material-ui/core/colors'
 import Modal from '@material-ui/core/Modal';
 import Request from './Request'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
   imageStyle: {
@@ -134,6 +136,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 const Landing = () => {
   const classes = useStyles();
   const [overlay, setOverlay] = useState(null)
@@ -141,6 +147,19 @@ const Landing = () => {
   const [date, setDate] = useState(null)  
   const [open, setOpen] = React.useState(false);
   const [type, setType] = React.useState("contact");
+  const [openAlert, setOpenAlert] = React.useState(false);
+
+  const handleClick = () => {
+    setOpenAlert(true);
+  };
+
+  const handleCloseAlert = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenAlert(false);
+  };
 
   const handleOpen = (request) => {
     setOpen(true);
@@ -209,10 +228,10 @@ const Landing = () => {
               <Grid item container  xs={10} md={6} className={classes.position}>
                 <Container maxWidth="sm" component="main" className={classes.padding}>
                     <Typography align="center" color="primary" gutterBottom className={classes.responsive}>
-                    Build
+                    Web App
                     </Typography>
                     <Typography align="center" component="p"  className={classes.responsiveBody}>
-                    Get a web application built to provide you with unique solutions and realize your goals.
+                    Get a web application or site built to realize your goals.
                     </Typography>
                     <Button
                     variant="contained"
@@ -227,8 +246,17 @@ const Landing = () => {
                       aria-labelledby="simple-modal-title"
                       aria-describedby="simple-modal-description"
                     >
-                      {<Request type={type} handleClose={handleClose}/>}
+                      {<Request type={type} handleClose={handleClose} handleClick={handleClick}/>}
                     </Modal>
+                    <Snackbar 
+                    open={openAlert} 
+                    autoHideDuration={6000} 
+                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                    onClose={handleCloseAlert}>
+                      <Alert onClose={handleCloseAlert} severity="success" color="info">
+                        Thank you, your request has been submitted!
+                      </Alert>
+                    </Snackbar>
                 </Container>
               </Grid>
             </Grid>
@@ -250,7 +278,7 @@ const Landing = () => {
                     Blogsie
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    Blgosie is a simple blog app where you can create, draft and publish posts.
+                    Blgosie is a simple blog site where you can create, draft and publish posts.
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -275,7 +303,7 @@ const Landing = () => {
                     Design
                     </Typography>
                     <Typography variant='h5' align="center"  component="p"  className={classes.responsiveBody}>
-                    Envision your applications as you have dreamed them to be.
+                    Envision your applications as you dream them to be.
                     </Typography>
                     <Button
                     variant="contained"
