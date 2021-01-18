@@ -16,7 +16,7 @@ if (process.env.NODE_ENV) {
         `${process.env.DB_DATABASE}`;
     pool = new Pool({
     connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
-    ssl: isProduction,
+    ssl: isProduction ? { rejectUnauthorized: false } : false,
     });
 } else {
     console.log("Frontend development mode...");
