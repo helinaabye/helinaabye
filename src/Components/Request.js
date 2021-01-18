@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState , useContext } from 'react';
 import { Button, TextField, Paper, Grid, Typography, Hidden, ClickAwayListener, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router-dom";
 import Chibird from '../video/tenor.gif'
 import CancelIcon from '@material-ui/icons/Cancel';
+import axios from 'axios';
+import { ApiContext } from '../contexts/ApiContext';
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -32,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Request = (props) => {
   const classes = useStyles();
+  const { address } = useContext(ApiContext)
   const { type, handleClose, handleClick } = props;
   const [ submission, setSubmission ] = useState({type: type, name: '', email: '', message: ''});
   const [ error, setError ] = useState("")
@@ -40,8 +43,15 @@ const Request = (props) => {
     e.preventDefault(); 
     const format = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i
     if (submission.name!=='' && submission.email!=='' && format.test(submission.email)) {
-      handleClose()
-      handleClick()
+      console.log(submission, address)
+      axios.post(`${address}/requests`, submission)
+      .then(({data}) => {
+        console.log(data)
+        if (data) {
+          handleClose()
+          handleClick()
+        }
+      })
     } else if (submission.name==='') {
       setError('Please enter a name')
     } else if (submission.email==='' || !format.test(submission.email)) {

@@ -1,18 +1,10 @@
-DROP TABLE IF EXISTS posts;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS requests;
 
-CREATE TABLE users (
+CREATE TABLE requests (
   id SERIAL PRIMARY KEY,
-  username TEXT,
-  password TEXT,
-  admin boolean
-);
-
-CREATE TABLE posts (
-  id SERIAL PRIMARY KEY,
-  title TEXT,
-  content TEXT,
-  time timestamp,
-  public boolean,
-  user_id integer REFERENCES users(id) ON DELETE CASCADE
-);
+  type TEXT,
+  name TEXT,
+  email TEXT,
+  message TEXT,
+  date timestamp
+)

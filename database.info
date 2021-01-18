@@ -5,15 +5,15 @@ ALTER ROLE apiuser CREATEDB;
 --> OPTION 1
 cat local.sql | psql -d postgres -U apiuser
 --> OPTION 2
-psql -d postgres -U apiuser
-CREATE DATABASE blogsie;
-\c blogsie
+psql -d postgres -U apiuser http://localhost:3005/requests
+CREATE DATABASE helinaabye;
+\c helinaabye
 --> copy, paste and run each create table command in local.sql one by one
 \q
 
 //To alter exisiting tables
 psql -d <database-name> -U <user-name>
-psql -d blogsie -U apiuser
+psql -d helinaabye -U apiuser
 ALTER TABLE <table-name> RENAME TO <new-table-name>;
 ALTER TABLE <table-name> ADD COLUMN <column-name> boolean;
 ALTER TABLE posts ADD COLUMN public boolean;
