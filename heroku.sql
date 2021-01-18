@@ -6,5 +6,5 @@ CREATE TABLE requests (
   name TEXT,
   email TEXT,
   message TEXT,
-  date timestamp
+  date timestamp default current_timestamp
 )

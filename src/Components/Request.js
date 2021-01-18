@@ -43,10 +43,8 @@ const Request = (props) => {
     e.preventDefault(); 
     const format = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i
     if (submission.name!=='' && submission.email!=='' && format.test(submission.email)) {
-      console.log(submission, address)
       axios.post(`${address}/requests`, submission)
       .then(({data}) => {
-        console.log(data)
         if (data) {
           handleClose()
           handleClick()
