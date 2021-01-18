@@ -6,6 +6,7 @@ import Chibird from '../video/tenor.gif'
 import CancelIcon from '@material-ui/icons/Cancel';
 import axios from 'axios';
 import { ApiContext } from '../contexts/ApiContext';
+import emailjs from 'emailjs-com';
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -46,6 +47,12 @@ const Request = (props) => {
       axios.post(`${address}/requests`, submission)
       .then(({data}) => {
         if (data) {
+          emailjs.send('service_7wbe3vq', 'template_uonez39', submission, 'user_MMcxErFGsXQxqr9T3pnpe')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
           handleClose()
           handleClick()
         }
