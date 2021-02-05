@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0.8
   },
   responsive: {
-    fontSize: "3rem",
+    fontSize: "2.5rem",
         [theme.breakpoints.down("sm")]: {
           fontSize: "1.5rem"
         }
@@ -57,13 +57,17 @@ const useStyles = makeStyles((theme) => ({
     color: "#3f51b5",
   },
   sectionImg: {
-    backgroundImage: 'url(https://unsplash.com/photos/aMPfitH2tT0/download?force=true&w=1920)',
+    // backgroundImage: 'url(https://unsplash.com/photos/aMPfitH2tT0/download?force=true&w=1920)',
+    backgroundImage: "linear-gradient(to bottom, rgba(75,0,130,0), rgba(75,0,130,1))",
     height: "800px",
+    backgroundColor: "#24b79c"
   },
   footerImg: {
-    backgroundImage: 'url(https://unsplash.com/photos/Xaanw0s0pMk/download?force=true&w=1920)',
+    // backgroundImage: 'url(https://unsplash.com/photos/Xaanw0s0pMk/download?force=true&w=1920)',
+    backgroundImage: "linear-gradient(to top, rgba(75,0,130,0), rgba(75,0,130,1))",
     height: "50vh",
     color: "#fff",
+    backgroundColor: "#24b79c"
   },
   position: {
     display: "flex",
@@ -75,8 +79,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "flex-end",
     justifyContent: "center",
   },
+  positionThree: {
+    display: "inline",
+  },
   padding: {
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(6, 0, 6),
   },
   margin: {
     margin: theme.spacing(2, 0, 1),
@@ -145,7 +152,7 @@ const useStyles = makeStyles((theme) => ({
   },
   svg: {
     maxWidth: "250px",
-    maxHeight: "250px"
+    maxHeight: "200px"
   }
 }));
 
@@ -230,10 +237,10 @@ const Landing = () => {
             <Grid item xs={12}>
               <div className={classnames(classes.imageStyle, classes.position, classes.headerImg)}>
                   <Typography className={classnames(classes.tagline, classes.responsive)} >
-                    Unique, 
-                    Customized,
-                    Innovative  <br/>
-                    Solutions
+                    UNIQUE, 
+                    CUSTOMIZED,
+                    INNOVATIVE  <br/>
+                    SOLUTIONS
                   </Typography>
                 </div>
             </Grid>
@@ -242,7 +249,7 @@ const Landing = () => {
                 <App className={classes.svg}/>
               </Grid>
               <Grid item container  xs={10} md={6} className={classes.position}>
-                <Container maxWidth="sm" component="main" className={classes.padding}>
+                <Container maxWidth="sm" component="main" >
                     <Typography align="center" color="primary" gutterBottom className={classes.responsive}>
                     Web App
                     </Typography>
@@ -316,8 +323,11 @@ const Landing = () => {
                 </div>
             </Grid>
             <Grid item container xs={12}  className={classnames(classes.padding, classes.position)}>
+            <Grid item container xs={8} md={5} className={classes.position}>
+                <Design className={classes.svg}/>
+              </Grid>
               <Grid item xs={10} md={5} className={classes.position}>
-                <Container maxWidth="sm" component="main" className={classes.padding}>
+                <Container maxWidth="sm" component="main" >
                     <Typography align="center" gutterBottom className={classnames(classes.responsive, classes.playPause)}>
                     Design
                     </Typography>
@@ -333,15 +343,11 @@ const Landing = () => {
                 </Container>
               </Grid>
               
-              <Grid item container xs={8} md={5} className={classes.position}>
-                <Design className={classes.svg}/>
-              </Grid>
+              
             </Grid>
-            <Grid item container xs={12} className={classnames(classes.imageStyle, classes.positionTwo, classes.footerImg, classes.responsive)}>
-              <Grid item xs={12}>
+            <Grid item container xs={12} className={classnames(classes.imageStyle, classes.position, classes.footerImg, classes.responsive)}>
+              <Grid item xs={12} className={classes.positionThree}>
                 Let's build dreams together!
-                </Grid>
-              <Grid item xs={12}>
                 <Typography component="p">
                 {'It is '}{date}{' in Addis Ababa, Ethiopia'}<br/>
                 <Link className={classes.link} 
@@ -349,8 +355,7 @@ const Landing = () => {
                 {'Contact me '}{<FontAwesomeIcon icon={faEnvelope} size="1x"  color="#fff"/>}{' any time :)'}
                 </Link> 
                 </Typography>
-                </Grid>
-                
+                </Grid>                
             </Grid>
            </Grid>
     </>     
