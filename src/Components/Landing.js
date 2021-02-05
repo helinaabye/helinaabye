@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Link, Typography } from '@material-ui/core';
+import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Fab, Grid, Link, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {  faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import classnames from 'classnames';
 import { withRouter } from "react-router-dom";
-import Blogsie from '../video/BlogsiePreview.mp4'
+import Blogsie from '../video/BlogsiePreview.mp4';
+import { ReactComponent as App } from '../images/App.svg';
+import { ReactComponent as Design } from '../images/Design.svg';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 import { purple } from '@material-ui/core/colors'
@@ -13,6 +15,7 @@ import Request from './Request'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import MessageIcon from '@material-ui/icons/Message';
 
 const useStyles = makeStyles((theme) => ({
   imageStyle: {
@@ -133,6 +136,16 @@ const useStyles = makeStyles((theme) => ({
   },
   modal: {
     padding: "20px"
+  }, 
+  fab: {
+    margin: theme.spacing.unit, // You might not need this now
+    position: "fixed",
+    bottom: theme.spacing.unit * 2,
+    right: theme.spacing.unit * 3
+  },
+  svg: {
+    maxWidth: "250px",
+    maxHeight: "250px"
   }
 }));
 
@@ -225,6 +238,9 @@ const Landing = () => {
                 </div>
             </Grid>
             <Grid item container xs={12} className={classnames(classes.padding, classes.position)}>
+              <Grid item container xs={8} md={5} className={classes.position} >
+                <App className={classes.svg}/>
+              </Grid>
               <Grid item container  xs={10} md={6} className={classes.position}>
                 <Container maxWidth="sm" component="main" className={classes.padding}>
                     <Typography align="center" color="primary" gutterBottom className={classes.responsive}>
@@ -256,7 +272,10 @@ const Landing = () => {
                       <Alert onClose={handleCloseAlert} severity="success" color="info">
                         Thank you, your request has been submitted!
                       </Alert>
-                    </Snackbar>
+                    </Snackbar>                    
+                    <Fab color="primary" aria-label="message" className={classes.fab} onClick={() => handleOpen("contact")}>
+                      <MessageIcon />
+                    </Fab>
                 </Container>
               </Grid>
             </Grid>
@@ -297,7 +316,7 @@ const Landing = () => {
                 </div>
             </Grid>
             <Grid item container xs={12}  className={classnames(classes.padding, classes.position)}>
-              <Grid item xs={10} md={6} className={classes.position}>
+              <Grid item xs={10} md={5} className={classes.position}>
                 <Container maxWidth="sm" component="main" className={classes.padding}>
                     <Typography align="center" gutterBottom className={classnames(classes.responsive, classes.playPause)}>
                     Design
@@ -312,6 +331,10 @@ const Landing = () => {
                       Request a design
                     </Button>
                 </Container>
+              </Grid>
+              
+              <Grid item container xs={8} md={5} className={classes.position}>
+                <Design className={classes.svg}/>
               </Grid>
             </Grid>
             <Grid item container xs={12} className={classnames(classes.imageStyle, classes.positionTwo, classes.footerImg, classes.responsive)}>
