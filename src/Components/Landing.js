@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Fab, Grid, Link, Typography } from '@material-ui/core';
+import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Fab, Grid, Hidden, Link, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {  faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import classnames from 'classnames';
@@ -7,6 +7,10 @@ import { withRouter } from "react-router-dom";
 import Blogsie from '../video/BlogsiePreview.mp4';
 import { ReactComponent as App } from '../images/App.svg';
 import { ReactComponent as Design } from '../images/Design.svg';
+import { ReactComponent as Unique } from '../images/unique.svg';
+import { ReactComponent as Customized } from '../images/customized.svg';
+import { ReactComponent as Innovative } from '../images/innovative.svg';
+import { ReactComponent as Solutions } from '../images/solutions.svg';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 import { purple } from '@material-ui/core/colors'
@@ -36,8 +40,27 @@ const useStyles = makeStyles((theme) => ({
   },
   tagline: {
     backgroundColor: '#fff',
-    padding: theme.spacing(4, 6, 4),
-    opacity: 0.8
+    borderStyle: "1px solid #fff",
+    borderRadius: "50px",
+    padding: theme.spacing(2, 3, 2),
+  },
+  taglineOne: {
+    color: '#fff',
+    borderStyle: "1px solid #fff",
+    borderRadius: "50px",
+    marginRight: "90px"
+  },
+  taglineTwo: {
+    backgroundColor: '#fff',
+    borderStyle: "1px solid #fff",
+    borderRadius: "50px",
+    padding: theme.spacing(2, 3, 2),
+  },
+  taglineThree: {
+    color: '#fff',
+    borderStyle: "1px solid #fff",
+    borderRadius: "50px",
+    marginLeft: "90px"
   },
   responsive: {
     fontSize: "2.5rem",
@@ -52,22 +75,24 @@ const useStyles = makeStyles((theme) => ({
         }
   },
   headerImg: {
-    backgroundImage: 'url(https://unsplash.com/photos/gREi-9tI5Mg/download?force=true&w=1920)',
+    // backgroundImage: 'url(https://unsplash.com/photos/gREi-9tI5Mg/download?force=true&w=1920)',
+    backgroundImage: "linear-gradient(to bottom, rgba(75,0,180,0), rgba(75,0,180,0.8))",
     height: "100vh",
     color: "#3f51b5",
+    backgroundColor: "#2fa6ee"
   },
   sectionImg: {
     // backgroundImage: 'url(https://unsplash.com/photos/aMPfitH2tT0/download?force=true&w=1920)',
-    backgroundImage: "linear-gradient(to bottom, rgba(75,0,130,0), rgba(75,0,130,1))",
+    backgroundImage: "linear-gradient(to top, rgba(75,0,180,0), rgba(75,0,180,0.8))",
     height: "800px",
-    backgroundColor: "#24b79c"
+    backgroundColor: "rgba(160, 43, 197, 1)"
   },
   footerImg: {
     // backgroundImage: 'url(https://unsplash.com/photos/Xaanw0s0pMk/download?force=true&w=1920)',
-    backgroundImage: "linear-gradient(to top, rgba(75,0,130,0), rgba(75,0,130,1))",
+    backgroundImage: "linear-gradient(to bottom, rgba(75,0,180,0), rgba(75,0,180,0.8))",
     height: "50vh",
     color: "#fff",
-    backgroundColor: "#24b79c"
+    backgroundColor: "rgba(160, 43, 197, 1)"
   },
   position: {
     display: "flex",
@@ -84,6 +109,12 @@ const useStyles = makeStyles((theme) => ({
   },
   padding: {
     padding: theme.spacing(6, 0, 6),
+  },
+  paddingTwo: {
+    padding: theme.spacing(6, 0, 0),
+  },
+  paddingThree: {
+    padding: theme.spacing(4, 0, 0),
   },
   margin: {
     margin: theme.spacing(2, 0, 1),
@@ -148,11 +179,17 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing.unit, // You might not need this now
     position: "fixed",
     bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 3
+    right: theme.spacing.unit * 3,
+    backgroundColor: "#fff",
+    color: "#3f51b5"
   },
   svg: {
     maxWidth: "250px",
     maxHeight: "200px"
+  },
+  svgTwo: {
+    maxWidth: "100px",
+    maxHeight: "50px"
   }
 }));
 
@@ -234,16 +271,78 @@ const Landing = () => {
            <>
           <CssBaseline />
            <Grid>
-            <Grid item xs={12}>
-              <div className={classnames(classes.imageStyle, classes.position, classes.headerImg)}>
+             <Grid item container xs={12} className={classnames(classes.imageStyle, classes.position, classes.headerImg)}>
+              <Hidden smUp> 
+             <Grid item container xs={6} spacing={1} className={classnames(classes.position, classes.paddingThree)}>
+              <Grid item xs={12} md={6} className={classes.taglineOne}>
+                <Unique className={classes.svgTwo}/>
+                <Typography>UNIQUE</Typography>
+              </Grid>
+              <Grid item xs={12} md={6} >
+              </Grid>
+              <Grid item xs={12} md={6} className={classes.taglineThree}>
+                <Customized className={classes.svgTwo}/>
+                <Typography>CUSTOMIZED</Typography>
+              </Grid>
+              <Grid item xs={12} md={6} >
+              </Grid>
+              <Grid item  xs={12} md={6} className={classes.taglineOne}>
+                <Innovative className={classes.svgTwo}/>
+                <Typography>INNOVATIVE</Typography>
+              </Grid>
+              <Grid item xs={12} md={6} >
+              </Grid>
+              <Grid item xs={12} md={6} className={classes.taglineThree}>
+                <Solutions className={classes.svgTwo}/>
+                <Typography>SOLUTIONS</Typography>
+                </Grid>
+                </Grid>
+              </Hidden>
+               
+              <Hidden mdDown> 
+              
+             <Grid item container xs={6} spacing={1} className={classnames(classes.position, classes.paddingTwo)}>
+              <Grid item xs={12} md={6} className={classes.tagline}>
+                <Unique className={classes.svgTwo}/>
+                <Typography>UNIQUE</Typography>
+              </Grid>
+              <Grid item xs={12} md={6} >
+              </Grid>
+              <Grid item xs={12} md={6} >
+              </Grid>
+              <Grid item xs={12} md={6} className={classes.taglineTwo}>
+                <Customized className={classes.svgTwo}/>
+                <Typography>CUSTOMIZED</Typography>
+              </Grid>
+              <Grid item xs={12} md={6} >
+              </Grid>
+              <Grid item xs={12} md={6} >
+              </Grid>
+              <Grid item  xs={12} md={6} className={classes.tagline}>
+                <Innovative className={classes.svgTwo}/>
+                <Typography>INNOVATIVE</Typography>
+              </Grid>
+              <Grid item xs={12} md={6} >
+              </Grid>
+              <Grid item xs={12} md={6} >
+              </Grid>
+              <Grid item xs={12} md={6} className={classes.taglineTwo}>
+                <Solutions className={classes.svgTwo}/>
+                <Typography>SOLUTIONS</Typography>
+                </Grid>
+                </Grid>
+              </Hidden>
+
+             
+              {/* <div className={classnames(classes.imageStyle, classes.position, classes.headerImg)}>
                   <Typography className={classnames(classes.tagline, classes.responsive)} >
                     UNIQUE, 
                     CUSTOMIZED,
                     INNOVATIVE  <br/>
                     SOLUTIONS
                   </Typography>
-                </div>
-            </Grid>
+                </div> */}
+                </Grid>
             <Grid item container xs={12} className={classnames(classes.padding, classes.position)}>
               <Grid item container xs={8} md={5} className={classes.position} >
                 <App className={classes.svg}/>

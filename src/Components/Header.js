@@ -61,6 +61,8 @@ const Header = ({ history }) => {
           <Grid item xs={2}>
           </Grid>
           <Grid item xs={5} className={classes.contentEnd}>
+          <Grid item xs={4}>
+          </Grid>
             <Grid item xs={2} sm={1}>
               <Tooltip title="Email">
               <a href="mailto:helinaago@gmail.com"  target="_blank"  rel="noopener noreferrer"
