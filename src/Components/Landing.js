@@ -121,7 +121,19 @@ const useStyles = makeStyles((theme) => ({
   },
   custom: {
     color: '#fff',
-    backgroundColor: purple[500]
+    backgroundColor: purple[600],
+    "&:hover": {
+      color: "#fff",
+      backgroundColor: '#6a1b9a',
+    },
+  },
+  customTwo: {
+    color: '#fff',
+    backgroundColor: "#4a148c",
+    "&:hover": {
+      color: "#fff",
+      backgroundColor: '#6a1b9a',
+    },
   },
   root: {
     maxWidth: 345,
@@ -181,7 +193,11 @@ const useStyles = makeStyles((theme) => ({
     bottom: theme.spacing.unit * 2,
     right: theme.spacing.unit * 3,
     backgroundColor: "#fff",
-    color: "#3f51b5"
+    color: "#3f51b5",    
+    "&:hover": {
+      color: "white !important",
+      backgroundColor: "#1976d2"
+    }
   },
   svg: {
     maxWidth: "250px",
@@ -197,7 +213,7 @@ const Alert = (props) => {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const Landing = () => {
+const Landing = ({history}) => {
   const classes = useStyles();
   const [overlay, setOverlay] = useState(null)
   const vidRef = useRef(null);
@@ -454,6 +470,10 @@ const Landing = () => {
                 {'Contact me '}{<FontAwesomeIcon icon={faEnvelope} size="1x"  color="#fff"/>}{' any time :)'}
                 </Link> 
                 </Typography>
+                <Button variant="contained" className={classes.customTwo}
+                  onClick={() => {history.push('/profile')}}>
+                  View Profile
+                </Button>
                 </Grid>                
             </Grid>
            </Grid>

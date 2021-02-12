@@ -34,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     marginRight: '15px'
   },
+  title: { 
+    "&:hover": {
+      cursor: "default"
+    },
+  }
 }));
 
 const Header = ({ history }) => {
@@ -47,13 +52,15 @@ const Header = ({ history }) => {
       className={classes.toolbar}>
         <Grid container>
           <Grid item  className={classes.contentStart} xs={5}>
-            <Avatar className={classes.avatar} alt="Helina Abye" src={helina} />
+            <Avatar className={classes.avatar} alt="Helina Abye" src={helina}
+            onClick={() => {history.push('/profile')}} />
             <Typography
             variant="h6"
             align="center"
             color="primary"
+            className={classes.title}
             noWrap
-            onClick={() => {history.push('/')}}
+            onClick={() => {history.push('/profile')}}
           >
             Helina Abye
           </Typography>
