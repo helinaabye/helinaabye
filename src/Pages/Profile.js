@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {    
     marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(4),
   },
   buttonContact: {    
     color: "#3f51b5",
@@ -103,7 +103,7 @@ const Profile = ({ history }) => {
     <div className={classnames(classes.root, classes.content)}>
       <Grid container className={classnames(classes.content, classes.main)}>
 
-    <Grid container spacing={2} className={classnames(classes.side, classes.content)} xs={12} sm={6}>
+    <Grid container className={classnames(classes.side, classes.content)} xs={12} sm={6}>
     <Hidden smUp>
       <Grid item  xs={12} >
               <Tooltip title="Go Back" placement="right">
@@ -168,7 +168,7 @@ const Profile = ({ history }) => {
         </Grid>
       </Hidden>
     <Grid container  className={classes.content} xs={12} sm={6}>
-      <Grid item container className={classes.content} xs={8}>
+      <Grid item container className={classes.content} xs={10}>
         <Typography
         variant="h4"
         align="center"
@@ -189,7 +189,7 @@ const Profile = ({ history }) => {
       <Grid item xs={12} className={classes.contact}>
       <Divider  variant="middle" className={classes.divider}/>
         </Grid>
-      <Grid item container className={classes.content} xs={8}>
+      <Grid item container className={classes.content} xs={10}>
         <Typography
         variant="h4"
         align="center"
@@ -206,10 +206,11 @@ const Profile = ({ history }) => {
       >
         JavaScript, React, Material UI, Node, Express, Postgres, Heroku, Git, CSS, HTML  
       </Typography>
-      </Grid> <Grid item xs={12} className={classes.contact}>
+      </Grid> 
+      <Grid item xs={12} className={classes.contact}>
       <Divider  variant="middle"  className={classes.divider}/>
         </Grid>
-      <Grid item container className={classes.content} xs={8}>
+      <Grid item container className={classes.content} xs={10}>
         <Typography
         variant="h4"
         align="center"
@@ -224,7 +225,7 @@ const Profile = ({ history }) => {
         color="primary"
         className={classes.responsiveBody}
       >
-        Communication, Team Work, Fast Learner  
+        Communication, Team Work, Fast Learner, Quality Focused, Efficent Delivery  
       </Typography>
       </Grid>
       <Grid item  xs={12}  className={classes.button}>
