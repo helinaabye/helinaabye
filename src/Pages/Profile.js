@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
         }
   },
   bio: {
-    padding: theme.spacing(2, 1),
+    padding: theme.spacing(3, 1),
     fontSize: "1.2rem",
         [theme.breakpoints.down("sm")]: {
           fontSize: "1rem"
@@ -111,8 +111,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
   },
   button: {    
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(2),
   },
   buttonContact: {    
     color: "#3f51b5",
