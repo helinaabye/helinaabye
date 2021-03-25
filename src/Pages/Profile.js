@@ -7,6 +7,19 @@ import { Container, Typography, Grid, Avatar, Tooltip, Divider, Hidden, IconButt
 import helina from '../images/helinaabye.jpg'
 import classnames from 'classnames';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import js from '../icons/js.png';
+import html from '../icons/html.png';
+import css from '../icons/css.jpg';
+import react from '../icons/react.png';
+import node from '../icons/nodejs.png';
+import express from '../icons/expressjs.svg';
+import materialui from '../icons/materialui.png';
+import firebase from '../icons/firebase.png';
+import heroku from '../icons/heroku.jpg';
+import postgres from '../icons/postgres.jpg';
+import git from '../icons/git.jpg';
+import github from '../icons/github.png';
+import Slider from '../Components/SkillSlider';
 
 const useStyles = makeStyles((theme) => ({
   color: {
@@ -45,6 +58,14 @@ const useStyles = makeStyles((theme) => ({
       height: theme.spacing(25),
     }
   },
+  icons: {
+    width: theme.spacing(8),
+    height: theme.spacing(8),
+    [theme.breakpoints.down("sm")]: {
+      width: theme.spacing(8),
+      height: theme.spacing(8),
+    }
+  },
   root: {
     height: "100vh"
   },
@@ -61,6 +82,13 @@ const useStyles = makeStyles((theme) => ({
         }
   },
   responsiveBody: {
+    fontSize: "1.2rem",
+        [theme.breakpoints.down("sm")]: {
+          fontSize: "1rem"
+        }
+  },
+  bio: {
+    padding: theme.spacing(2, 1),
     fontSize: "1.2rem",
         [theme.breakpoints.down("sm")]: {
           fontSize: "1rem"
@@ -169,19 +197,19 @@ const Profile = ({ history }) => {
       </Hidden>
     <Grid container  className={classes.content} xs={12} sm={6}>
       <Grid item container className={classes.content} xs={10}>
-        <Typography
+        {/* <Typography
         variant="h4"
         align="center"
         color="primary"
         className={classes.responsive}
       >
         Bio
-      </Typography>
+      </Typography> */}
         <Typography
         variant="h6"
         align="center"
         color="primary"
-        className={classes.responsiveBody}
+        className={classes.bio}
       >
         Passionate self taught software developer currently focusing on full stack web development. I believe software has the ability to change and improve people’s lives. 
       </Typography>
@@ -190,28 +218,66 @@ const Profile = ({ history }) => {
       <Divider  variant="middle" className={classes.divider}/>
         </Grid>
       <Grid item container className={classes.content} xs={10}>
-        <Typography
+        {/* <Typography
         variant="h4"
         align="center"
         color="primary"
         className={classes.responsive}
       >
         Tech
-      </Typography>
-        <Typography
+      </Typography> */}
+        {/* <Typography
         variant="h6"
         align="center"
         color="primary"
         className={classes.responsiveBody}
       >
         JavaScript, React, Material UI, Node, Express, Postgres, Heroku, Git, CSS, HTML  
-      </Typography>
+      </Typography> */}
+      <Grid item container spacing={2} className={classes.content}>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={js} />
+        </Grid>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={html} />
+        </Grid>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={css} />
+        </Grid>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={react} />
+        </Grid>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={node} />
+        </Grid>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={express} />
+        </Grid>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={firebase} />
+        </Grid>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={materialui} />
+        </Grid>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={postgres} />
+        </Grid>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={heroku} />
+        </Grid>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={git} />
+        </Grid>
+        <Grid item>
+          <Avatar className={classes.icons} alt="Helina Abye" src={github} />
+        </Grid>
+      </Grid>
       </Grid> 
       <Grid item xs={12} className={classes.contact}>
       <Divider  variant="middle"  className={classes.divider}/>
         </Grid>
       <Grid item container className={classes.content} xs={10}>
-        <Typography
+        {/* <Typography
         variant="h4"
         align="center"
         color="primary"
@@ -226,7 +292,8 @@ const Profile = ({ history }) => {
         className={classes.responsiveBody}
       >
         Communication, Team Work, Fast Learner, Quality Focused, Efficent Delivery  
-      </Typography>
+      </Typography> */}
+      <Slider/>
       </Grid>
       <Grid item  xs={12}  className={classes.button}>
         <Button color="primary"
