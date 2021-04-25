@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
   },
   side: {
     backgroundImage: "linear-gradient(to bottom, rgba(75,0,180,0), rgba(75,0,180,0.8))",
-    height: "100%",
     color: "#3f51b5",
     padding: theme.spacing(8, 1),
     backgroundColor: "#2fa6ee"
@@ -127,67 +126,64 @@ const useStyles = makeStyles((theme) => ({
 const Profile = ({ history }) => {
   const classes = useStyles();
 
-  return (  
-    <div className={classnames(classes.root, classes.content)}>
-      <Grid container className={classnames(classes.content, classes.main)}>
-
-    <Grid container className={classnames(classes.side, classes.content)} xs={12} sm={6}>
-    <Hidden smUp>
-      <Grid item  xs={12} >
-              <Tooltip title="Go Back" placement="right">
-        <IconButton size="small" color="primary"  
-            onClick={() => {history.push('/')}} className={classnames(classes.back)}>
-        <ChevronLeftIcon/>
-      </IconButton>
-              </Tooltip>
-      </Grid>
-      </Hidden>
-      <Grid item container className={classes.content} xs={12}>
-        <Avatar className={classes.avatar} alt="Helina Abye" src={helina} />
-      </Grid>
-      <Grid item container className={classes.content} xs={12}>
-        <Typography
-        variant="h4"
-        align="center"
-        className={classnames(classes.color, classes.responsive)}
-      >
-        Helina Abye
-      </Typography>
-    
-      </Grid>
-    <Grid container xs={12} direction="row" className={classnames(classes.content, classes.contact, classes.responsiveBody)}>
-    <Grid item xs={2} sm={1}>
-              <Tooltip title="Email">
-              <a href="mailto:helinaago@gmail.com"  target="_blank"  rel="noopener noreferrer"
-                >
-                <FontAwesomeIcon icon={faEnvelope} size="1x"  color="#fff"/>
-              </a>   
-              </Tooltip>
-            </Grid>
-            <Grid item xs={2} sm={1}>
-              <Tooltip title="Medium">
-              <a href="https://medium.com/@helinaabye"  target="_blank"  rel="noopener noreferrer"
-                >
-                  <FontAwesomeIcon icon={faMediumM} size="1x"  color="#fff"/>
-                </a>
-                </Tooltip>
-            </Grid>
-            <Grid item xs={2} sm={1}>
-              <Tooltip title="Twitter">
-              <a href="https://www.twitter.com/coderette_" target="_blank"  rel="noopener noreferrer" >
-                <FontAwesomeIcon icon={faTwitter} size="1x"  color="#fff"/>
-              </a>
-              </Tooltip>
-            </Grid>
-            <Grid item xs={2} sm={1}>
-              <Tooltip title="Github">
-              <a href="https://github.com/helinaabye"  target="_blank"  rel="noopener noreferrer"
-               >
-                <FontAwesomeIcon icon={faGithub} size="1x" color="#fff"/>
-              </a>
-              </Tooltip>
-            </Grid>
-    </Grid>
+  return ( 
+      <Grid container className={classes.root}>
+        <Grid container className={classnames(classes.side, classes.content)} sm={12} md={6}>
+        <Hidden smUp>
+          <Grid item  xs={12} >
+                  <Tooltip title="Go Back" placement="right">
+            <IconButton size="small" color="primary"  
+                onClick={() => {history.push('/')}} className={classnames(classes.back)}>
+            <ChevronLeftIcon/>
+          </IconButton>
+                  </Tooltip>
+          </Grid>
+          </Hidden>
+          <Grid item container className={classes.content} xs={12}>
+            <Avatar className={classes.avatar} alt="Helina Abye" src={helina} />
+          </Grid>
+          <Grid item container className={classes.content} xs={12}>
+            <Typography
+            variant="h4"
+            align="center"
+            className={classnames(classes.color, classes.responsive)}
+          >
+            Helina Abye
+          </Typography>        
+          </Grid>
+        <Grid container xs={12} direction="row" className={classnames(classes.content, classes.contact, classes.responsiveBody)}>
+        <Grid item xs={2} sm={1}>
+                  <Tooltip title="Email">
+                  <a href="mailto:helinaago@gmail.com"  target="_blank"  rel="noopener noreferrer"
+                    >
+                    <FontAwesomeIcon icon={faEnvelope} size="1x"  color="#fff"/>
+                  </a>   
+                  </Tooltip>
+                </Grid>
+                <Grid item xs={2} sm={1}>
+                  <Tooltip title="Medium">
+                  <a href="https://medium.com/@helinaabye"  target="_blank"  rel="noopener noreferrer"
+                    >
+                      <FontAwesomeIcon icon={faMediumM} size="1x"  color="#fff"/>
+                    </a>
+                    </Tooltip>
+                </Grid>
+                <Grid item xs={2} sm={1}>
+                  <Tooltip title="Twitter">
+                  <a href="https://www.twitter.com/coderette_" target="_blank"  rel="noopener noreferrer" >
+                    <FontAwesomeIcon icon={faTwitter} size="1x"  color="#fff"/>
+                  </a>
+                  </Tooltip>
+                </Grid>
+                <Grid item xs={2} sm={1}>
+                  <Tooltip title="Github">
+                  <a href="https://github.com/helinaabye"  target="_blank"  rel="noopener noreferrer"
+                  >
+                    <FontAwesomeIcon icon={faGithub} size="1x" color="#fff"/>
+                  </a>
+                  </Tooltip>
+                </Grid>
+        </Grid>
     </Grid>
     
     <Hidden smUp>
@@ -195,7 +191,9 @@ const Profile = ({ history }) => {
         
         </Grid>
       </Hidden>
-    <Grid container  className={classes.content} xs={12} sm={6}>
+
+      
+    <Grid container  className={classes.content} sm={12} md={6}>
       <Grid item container className={classes.content} xs={10}>
         {/* <Typography
         variant="h4"
@@ -214,7 +212,7 @@ const Profile = ({ history }) => {
         Passionate self taught software developer currently focusing on full stack web development. I believe software has the ability to change and improve people’s lives. 
       </Typography>
       </Grid>
-      <Grid item xs={12} className={classes.contact}>
+      <Grid item xs={12} >
       <Divider  variant="middle" className={classes.divider}/>
         </Grid>
       <Grid item container className={classes.content} xs={10}>
@@ -303,7 +301,6 @@ const Profile = ({ history }) => {
       </Grid>
     </Grid>
     </Grid>
-    </div>
   )
 }
 
