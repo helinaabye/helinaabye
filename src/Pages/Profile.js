@@ -146,7 +146,7 @@ const Profile = ({ history }) => {
   return ( 
       <Grid container className={classes.root}>
         <Grid container className={classnames(classes.side, classes.content)} sm={12} md={6}>
-        <Hidden smUp>
+        <Hidden mdUp>
           <Grid item  xs={12} >
                   <Tooltip title="Go Back" placement="right">
             <IconButton size="small" color="primary"  
