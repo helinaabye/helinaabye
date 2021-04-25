@@ -13,6 +13,17 @@ const useStyles = makeStyles((theme) => ({
   margin: {
     height: theme.spacing(3),
   },
+  box: {
+    margin: "2px",
+  },
+  marker: {
+    height: "15px",
+    backgroundColor: "#2fa6ee"
+  },
+  base: {
+    height: "15px",
+    backgroundColor: "#eeeeee"
+  },
 }));
 
 function ValueLabelComponent(props) {
@@ -96,7 +107,7 @@ const IOSSlider = withStyles({
   markActive: {
     opacity: 1,
     backgroundColor: 'currentColor',
-  },
+  }
 })(Slider);
 
 
@@ -114,25 +125,35 @@ export default function SkillSlider() {
   const classes = useStyles();
 
   return (
-      <Grid container>
-        <Grid item xs={6}>
+      <Grid container spacing={2}>
+        <Grid item container xs={12} sm={6}>
           <Typography gutterBottom>Communication</Typography>
-          <IOSSlider aria-label="communication" value={90} marks={marks} valueLabelDisplay="on" />
+          <Grid item xs={11} className={classes.marker}></Grid>
+          <Grid item xs={1} className={classes.base}></Grid>
+          {/* <IOSSlider aria-label="communication" value={90} marks={marks} valueLabelDisplay="on" /> */}
        
         </Grid>
-        <Grid item xs={6}>
-          <Typography gutterBottom>Team Work</Typography>
-          <IOSSlider aria-label="team work" value={80} marks={marks} valueLabelDisplay="on" />
+     
+        <Grid item container xs={12} sm={6}>
+          <Typography gutterBottom>Team Work</Typography>          
+          <Grid item xs={10} className={classes.marker}></Grid>
+          <Grid item xs={2} className={classes.base}></Grid>
+           {/*<IOSSlider aria-label="team work" value={80} marks={marks} valueLabelDisplay="on" />*/}
     
         </Grid>
-        <Grid item xs={6}>
-          <Typography gutterBottom>Fast Learner</Typography>
-          <IOSSlider aria-label="team work" value={80} marks={marks} valueLabelDisplay="on" />
+        <Grid item container xs={12} sm={6}>
+          <Typography gutterBottom>Fast Learner</Typography>  
+          <Grid item xs={10} className={classes.marker}></Grid>
+          <Grid item xs={2} className={classes.base}></Grid>
+          {/* <IOSSlider aria-label="team work" value={80} marks={marks} valueLabelDisplay="on" /> */}
        
         </Grid>
-        <Grid item xs={6}>
-          <Typography gutterBottom>Delivery</Typography>
-          <IOSSlider aria-label="delivery" value={90} marks={marks} valueLabelDisplay="on" />
+       
+        <Grid item container xs={12} sm={6}>
+          <Typography gutterBottom>Delivery</Typography>  
+          <Grid item xs={11} className={classes.marker}></Grid>
+          <Grid item xs={1} className={classes.base}></Grid>
+          {/* <IOSSlider aria-label="delivery" value={90} marks={marks} valueLabelDisplay="on" /> */}
        
         </Grid>
       </Grid>  
