@@ -206,7 +206,15 @@ const useStyles = makeStyles((theme) => ({
   svgTwo: {
     maxWidth: "100px",
     maxHeight: "50px"
-  }
+  },
+  magnify: {
+    "&:hover": { 
+      transition: theme.transitions.create(["width", "height"], {
+      duration: 200
+          }),
+      fontSize: "1.5rem !important"
+    },
+    }
 }));
 
 const Alert = (props) => {
@@ -288,39 +296,39 @@ const Landing = ({history}) => {
           <CssBaseline />
            <Grid>
              <Grid item container xs={12} className={classnames(classes.imageStyle, classes.position, classes.headerImg)}>
-              <Hidden smUp> 
+              <Hidden mdUp> 
              <Grid item container xs={6} spacing={1} className={classnames(classes.position, classes.paddingThree)}>
               <Grid item xs={12} md={6} className={classes.taglineOne}>
                 <Unique className={classes.svgTwo}/>
-                <Typography>UNIQUE</Typography>
+                <Typography className={classes.magnify} >UNIQUE</Typography>
               </Grid>
               <Grid item xs={12} md={6} >
               </Grid>
               <Grid item xs={12} md={6} className={classes.taglineThree}>
                 <Customized className={classes.svgTwo}/>
-                <Typography>CUSTOMIZED</Typography>
+                <Typography className={classes.magnify} >CUSTOMIZED</Typography>
               </Grid>
               <Grid item xs={12} md={6} >
               </Grid>
               <Grid item  xs={12} md={6} className={classes.taglineOne}>
                 <Innovative className={classes.svgTwo}/>
-                <Typography>INNOVATIVE</Typography>
+                <Typography className={classes.magnify} >INNOVATIVE</Typography>
               </Grid>
               <Grid item xs={12} md={6} >
               </Grid>
               <Grid item xs={12} md={6} className={classes.taglineThree}>
                 <Solutions className={classes.svgTwo}/>
-                <Typography>SOLUTIONS</Typography>
+                <Typography className={classes.magnify} >SOLUTIONS</Typography>
                 </Grid>
                 </Grid>
               </Hidden>
                
-              <Hidden mdDown> 
+              <Hidden smDown> 
               
              <Grid item container xs={6} spacing={1} className={classnames(classes.position, classes.paddingTwo)}>
               <Grid item xs={12} md={6} className={classes.tagline}>
                 <Unique className={classes.svgTwo}/>
-                <Typography>UNIQUE</Typography>
+                <Typography className={classes.magnify}>UNIQUE</Typography>
               </Grid>
               <Grid item xs={12} md={6} >
               </Grid>
@@ -328,7 +336,7 @@ const Landing = ({history}) => {
               </Grid>
               <Grid item xs={12} md={6} className={classes.taglineTwo}>
                 <Customized className={classes.svgTwo}/>
-                <Typography>CUSTOMIZED</Typography>
+                <Typography className={classes.magnify}>CUSTOMIZED</Typography>
               </Grid>
               <Grid item xs={12} md={6} >
               </Grid>
@@ -336,7 +344,7 @@ const Landing = ({history}) => {
               </Grid>
               <Grid item  xs={12} md={6} className={classes.tagline}>
                 <Innovative className={classes.svgTwo}/>
-                <Typography>INNOVATIVE</Typography>
+                <Typography className={classes.magnify}>INNOVATIVE</Typography>
               </Grid>
               <Grid item xs={12} md={6} >
               </Grid>
@@ -344,7 +352,7 @@ const Landing = ({history}) => {
               </Grid>
               <Grid item xs={12} md={6} className={classes.taglineTwo}>
                 <Solutions className={classes.svgTwo}/>
-                <Typography>SOLUTIONS</Typography>
+                <Typography className={classes.magnify}>SOLUTIONS</Typography>
                 </Grid>
                 </Grid>
               </Hidden>

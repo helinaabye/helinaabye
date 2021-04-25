@@ -32,13 +32,30 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '50px'
   },
   avatar: {
-    marginRight: '15px'
-  },
-  title: { 
+    marginTop: '10px',
+    marginRight: '15px',
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+    position: "absolute",
+    zIndex: "9999",
+    cursor: "pointer",
     "&:hover": {
-      cursor: "default"
+      width: theme.spacing(8),
+      height: theme.spacing(8),
     },
-  }
+  },
+  title: {     
+    marginLeft: '70px',
+    cursor: "pointer",
+    "&:hover": {
+      fontSize: "1.5rem"
+    },
+  },
+  magnify: {
+    "&:hover": {
+      fontSize: "1.5rem"
+    },
+    }
 }));
 
 const Header = ({ history }) => {
@@ -74,7 +91,7 @@ const Header = ({ history }) => {
               <Tooltip title="Email">
               <a href="mailto:helinaago@gmail.com"  target="_blank"  rel="noopener noreferrer"
                 >
-                <FontAwesomeIcon icon={faEnvelope} size="1x"  color="#3f51b5"/>
+                <FontAwesomeIcon icon={faEnvelope} size="1x" className={classes.magnify}  color="#3f51b5"/>
               </a>   
               </Tooltip>
             </Grid>
@@ -82,14 +99,14 @@ const Header = ({ history }) => {
               <Tooltip title="Medium">
               <a href="https://medium.com/@helinaabye"  target="_blank"  rel="noopener noreferrer"
                 >
-                  <FontAwesomeIcon icon={faMediumM} size="1x"  color="#3f51b5"/>
+                  <FontAwesomeIcon icon={faMediumM} size="1x" className={classes.magnify} color="#3f51b5"/>
                 </a>
                 </Tooltip>
             </Grid>
             <Grid item xs={2} sm={1}>
               <Tooltip title="Twitter">
               <a href="https://www.twitter.com/coderette_" target="_blank"  rel="noopener noreferrer" >
-                <FontAwesomeIcon icon={faTwitter} size="1x"  color="#3f51b5"/>
+                <FontAwesomeIcon icon={faTwitter} size="1x" className={classes.magnify}  color="#3f51b5"/>
               </a>
               </Tooltip>
             </Grid>
@@ -97,7 +114,7 @@ const Header = ({ history }) => {
               <Tooltip title="Github">
               <a href="https://github.com/helinaabye"  target="_blank"  rel="noopener noreferrer"
                >
-                <FontAwesomeIcon icon={faGithub} size="1x" color="#3f51b5"/>
+                <FontAwesomeIcon icon={faGithub} size="1x" className={classes.magnify} color="#3f51b5"/>
               </a>
               </Tooltip>
             </Grid>

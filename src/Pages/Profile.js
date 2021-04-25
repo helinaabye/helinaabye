@@ -61,9 +61,16 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(8),
     height: theme.spacing(8),
     [theme.breakpoints.down("sm")]: {
-      width: theme.spacing(8),
-      height: theme.spacing(8),
-    }
+      width: theme.spacing(7),
+      height: theme.spacing(7),
+    },
+    "&:hover": {  
+      transition: theme.transitions.create(["width", "height"], {
+      duration: 100
+          }),
+      width: theme.spacing(9),
+      height: theme.spacing(9),
+    },
   },
   root: {
     height: "100vh"
@@ -72,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%"
   },
   contact: {
-    padding: theme.spacing(2, 1),
+    padding: theme.spacing(3, 1),
   },
   responsive: {
     fontSize: "2rem",
@@ -120,6 +127,16 @@ const useStyles = makeStyles((theme) => ({
       color: "#fff",
       backgroundColor: "#1976d2"
     },
+  },
+  title: {     
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    cursor: "default",
+  },
+  magnify: {
+    "&:hover": {
+      fontSize: "1.5rem"
+    },
   }
 }));
 
@@ -140,13 +157,13 @@ const Profile = ({ history }) => {
           </Grid>
           </Hidden>
           <Grid item container className={classes.content} xs={12}>
-            <Avatar className={classes.avatar} alt="Helina Abye" src={helina} />
+            <Avatar className={classnames(classes.avatar, classes.title)} alt="Helina Abye" src={helina} />
           </Grid>
           <Grid item container className={classes.content} xs={12}>
             <Typography
             variant="h4"
             align="center"
-            className={classnames(classes.color, classes.responsive)}
+            className={classnames(classes.color, classes.title, classes.responsive)}
           >
             Helina Abye
           </Typography>        
@@ -156,7 +173,7 @@ const Profile = ({ history }) => {
                   <Tooltip title="Email">
                   <a href="mailto:helinaago@gmail.com"  target="_blank"  rel="noopener noreferrer"
                     >
-                    <FontAwesomeIcon icon={faEnvelope} size="1x"  color="#fff"/>
+                    <FontAwesomeIcon icon={faEnvelope} className={classes.magnify} size="1x"  color="#fff"/>
                   </a>   
                   </Tooltip>
                 </Grid>
@@ -164,14 +181,14 @@ const Profile = ({ history }) => {
                   <Tooltip title="Medium">
                   <a href="https://medium.com/@helinaabye"  target="_blank"  rel="noopener noreferrer"
                     >
-                      <FontAwesomeIcon icon={faMediumM} size="1x"  color="#fff"/>
+                      <FontAwesomeIcon icon={faMediumM} className={classes.magnify} size="1x"  color="#fff"/>
                     </a>
                     </Tooltip>
                 </Grid>
                 <Grid item xs={2} sm={1}>
                   <Tooltip title="Twitter">
                   <a href="https://www.twitter.com/coderette_" target="_blank"  rel="noopener noreferrer" >
-                    <FontAwesomeIcon icon={faTwitter} size="1x"  color="#fff"/>
+                    <FontAwesomeIcon icon={faTwitter} className={classes.magnify} size="1x"  color="#fff"/>
                   </a>
                   </Tooltip>
                 </Grid>
@@ -179,7 +196,7 @@ const Profile = ({ history }) => {
                   <Tooltip title="Github">
                   <a href="https://github.com/helinaabye"  target="_blank"  rel="noopener noreferrer"
                   >
-                    <FontAwesomeIcon icon={faGithub} size="1x" color="#fff"/>
+                    <FontAwesomeIcon icon={faGithub} className={classes.magnify} size="1x" color="#fff"/>
                   </a>
                   </Tooltip>
                 </Grid>
