@@ -137,6 +137,9 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       fontSize: "1.5rem"
     },
+  },
+  lang: {
+    marginTop: theme.spacing(2),
   }
 }));
 
@@ -232,7 +235,7 @@ const Profile = ({ history }) => {
       <Grid item xs={12} >
       <Divider  variant="middle" className={classes.divider}/>
         </Grid>
-      <Grid item container className={classes.content} xs={10}>
+      <Grid item container className={classes.lang} xs={10}>
         {/* <Typography
         variant="h4"
         align="center"
