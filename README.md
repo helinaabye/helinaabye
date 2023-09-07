@@ -1,7 +1,3 @@
-github profile markdown generator logo
-GitHub Profile README Generator
-Star this repo17139
-Fork on GitHub4895
 <h1 align="center">Hi 👋, I'm Helina Abye</h1>
 <h3 align="center">A passionate frontend developer from Ethiopia</h3>
 
