@@ -6,21 +6,21 @@
 
 <p align="left"> <a href="https://twitter.com/coderette_" target="blank"><img src="https://img.shields.io/twitter/follow/coderette_?logo=twitter&style=for-the-badge" alt="coderette_" /></a> </p>
 
-- 🔭 I’m currently working on [attendance app](https://github.com/eleccrazy/std-mgt)
+- 🔭 I’m currently working on an [attendance app](https://github.com/eleccrazy/std-mgt) for ALX Ethiopia
 
-- 🌱 I’m currently learning **Best practices for React projects**
+- 🌱 I recently completed the ALX Software Engineering program and I’m currently learning **Best practices for React projects**
 
-- 👯 I’m looking to collaborate on **full stack projects**
+- 👯 I’m looking to collaborate on **React Firebase projects**
 
-- 🤝 I’m looking for help with **improving my React Firebase skills**
+- 🤝 I can use help with **improving my full stack skills**
 
-- 👨‍💻 All of my projects are available at [under construction](under construction)
+<!-- - 👨‍💻 All of my projects are available at [under construction](under construction) -->
 
-- 📝 I regularly write articles on [https://medium.com/@helinaabye](https://medium.com/@helinaabye)
+- 📝 I write articles on [https://medium.com/@helinaabye](https://medium.com/@helinaabye)
 
 - 💬 Ask me about **React, Self learning, Writing**
 
-- 📫 How to reach me **helinaago@gmail.com**
+- 📫 How to reach me, send me an email via **helinaago@gmail.com**
 
 - 📄 Know about my experiences [https://www.linkedin.com/in/helinaabye/](https://www.linkedin.com/in/helinaabye/)
 
